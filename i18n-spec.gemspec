@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{i18n-spec}
-  s.version = "0.0.0"
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Christopher Dell}]
   s.date = %q{2011-12-12}
-  s.description = %q{TODO: longer description of your gem}
+  s.description = %q{Includes a number of rspec matchers to make specing your locale files easy peasy.}
   s.email = %q{chris@tigrish.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
