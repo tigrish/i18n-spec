@@ -1,5 +1,7 @@
 # RSpec matchers for I18n files
 
+i18n-spec provides RSpec matchers for testing your locale files.
+
 ## Implemented matchers
 
     describe "config/locales/en.yml" do
