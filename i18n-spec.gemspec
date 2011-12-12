@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
+    "i18n-spec.gemspec",
     "lib/i18n-spec.rb",
     "lib/i18n-spec/matchers/be_parseable_matcher.rb",
     "lib/i18n-spec/matchers/have_valid_pluralization_keys_matcher.rb",
