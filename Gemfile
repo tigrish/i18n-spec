@@ -1,3 +1,6 @@
+source :rubygems
+
+gem 'psych'
 
 group :development do
   gem "rspec", "~> 2.3.0"

@@ -1,0 +1,10 @@
+en:
+  hello: 'ohai'
+  cats:
+    zero: 'no cats'
+    one: 'a cat'
+    other: '%{count} cats'
+  itteh:
+    bitteh:
+      ceiling:
+        kitteh: 'is watching you'

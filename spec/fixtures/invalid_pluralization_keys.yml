@@ -1,0 +1,6 @@
+en:
+  cats:
+    zero: 'no cats'
+    one: 'a cat'
+    other: '%{count} cats'
+    invalid: 'this is not a valid pluralization key'
