@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/tigrish/i18n-spec"
   gem.license = "MIT"
   gem.summary = %Q{Matchers for specing locale files}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.description = %Q{Includes a number of rspec matchers to make specing your locale files easy peasy.}
   gem.email = "chris@tigrish.com"
   gem.authors = ["Christopher Dell"]
   # dependencies defined in Gemfile
