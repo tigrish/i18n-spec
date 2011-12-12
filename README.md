@@ -9,6 +9,15 @@ i18n-spec provides RSpec matchers for testing your locale files.
       it { should have_valid_pluralization_keys }
     end
 
+## To test all files in a specific directory
+
+    Dir.glob('config/locales/*.yml') do |locale_file|
+      describe locale_file do
+        it { should be_parseable }
+        it { should have_valid_pluralization_keys }
+      end
+    end
+
 ## TODO
 
     describe "config/locales/fr.yml" do
