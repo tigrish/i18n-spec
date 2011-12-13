@@ -1,8 +1,7 @@
 require 'spec_helper'
 
-describe "spec/fixtures/en.yml" do
-  it { should be_parseable }
-  it { should have_valid_pluralization_keys }
+describe "Valid file" do
+  it_behaves_like "a valid locale file", 'spec/fixtures/en.yml'
 end
 
 describe "Invalid files" do
