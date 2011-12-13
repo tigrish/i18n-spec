@@ -1,4 +1,8 @@
-# RSpec matchers for I18n files
+# i18n-spec
+
+[![Build Status](https://secure.travis-ci.org/tigrish/i18n-spec.png)](http://travis-ci.org/tigrish/i18n-spec)
+
+## RSpec matchers for I18n files
 
 i18n-spec provides RSpec matchers for testing your locale files.
 
