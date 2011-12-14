@@ -32,7 +32,9 @@ module I18nSpec
 
     def is_a_complete_tranlsation_of?(default_locale_filepath)
       default_locale = LocaleFile.new(default_locale_filepath)
-      translations.keys.sort == default_locale.translations.keys.sort
+      default_keys   = flatten_tree(translations.values.first).keys.sort
+      keys           = flatten_tree(default_locale.translations.values.first).keys.sort
+      keys == default_keys
     end
 
   protected
