@@ -22,6 +22,10 @@ module I18nSpec
       true
     end
 
+    def has_one_top_level_namespace?
+      translations.keys.size == 1
+    end
+
   protected
 
     def translations
