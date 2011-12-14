@@ -30,6 +30,11 @@ module I18nSpec
       translations.keys.first == File.basename(@filepath, File.extname(@filepath))
     end
 
+    def is_a_complete_tranlsation_of?(default_locale_filepath)
+      default_locale = LocaleFile.new(default_locale_filepath)
+      translations.keys.sort == default_locale.translations.keys.sort
+    end
+
   protected
 
     def translations

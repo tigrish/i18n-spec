@@ -1,0 +1,9 @@
+es:
+  cats:
+    zero: 'no gatos'
+    one: 'un gato'
+    other: '%{count} gatos'
+  itteh:
+    bitteh:
+      ceiling:
+        kitteh: 'te mira'

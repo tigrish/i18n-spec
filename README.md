@@ -2,11 +2,11 @@
 
 [![Build Status](https://secure.travis-ci.org/tigrish/i18n-spec.png)](http://travis-ci.org/tigrish/i18n-spec)
 
-## RSpec matchers for I18n files
+i18n-spec provides RSpec matchers for testing your locale files and their translations.
 
-i18n-spec provides RSpec matchers for testing your locale files.
+## Testing the validity of your locale files
 
-## Implemented matchers
+There are a few matchers available; the subject of the spec is always a path to a locale file.
 
     describe "config/locales/en.yml" do
       it { should be_parseable }
@@ -15,13 +15,13 @@ i18n-spec provides RSpec matchers for testing your locale files.
       it { should be_named_like_top_level_namespace }
     end
 
-All of these tests can be ran with a shared example :
+All of these tests can be ran in one line with a shared example :
 
     describe "A locale file" do
       it_behaves_like 'a valid locale file', 'config/locales/en.yml'
     end
 
-You can run all of these tests for every file in a directory like so :
+Even better, you can run all of these tests for every file in a directory like so :
 
     Dir.glob('config/locale/*.yml') do |locale_file|
       describe "a locale file" do
@@ -29,9 +29,10 @@ You can run all of these tests for every file in a directory like so :
       end
     end
 
-## TODO
+## Testing the validity of your translation data
+
+If you need to test that all translations have been completed :
 
     describe "config/locales/fr.yml" do
-      it { should be_a_subset_of('config/locales/en.yml')
-      it { should be_a_complete_translation_of('config/locales/en.yml') }
+      it { should be_a_complete_translation_of 'config/locales/en.yml' }
     end
