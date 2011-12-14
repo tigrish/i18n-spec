@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{i18n-spec}
-  s.version = "0.0.4"
+  s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Christopher Dell}]
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "i18n-spec.gemspec",
     "lib/i18n-spec.rb",
+    "lib/i18n-spec/matchers/be_a_complete_translation_of_matcher.rb",
     "lib/i18n-spec/matchers/be_named_like_top_level_namespace_matcher.rb",
     "lib/i18n-spec/matchers/be_parseable_matcher.rb",
     "lib/i18n-spec/matchers/have_one_top_level_namespace_matcher.rb",
@@ -36,6 +37,8 @@ Gem::Specification.new do |s|
     "lib/i18n-spec/models/locale_file.rb",
     "lib/i18n-spec/shared_examples/valid_locale_file.rb",
     "spec/fixtures/en.yml",
+    "spec/fixtures/es.yml",
+    "spec/fixtures/fr.yml",
     "spec/fixtures/invalid_pluralization_keys.yml",
     "spec/fixtures/multiple_top_levels.yml",
     "spec/fixtures/unparseable.yml",
