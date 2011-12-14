@@ -26,6 +26,10 @@ module I18nSpec
       translations.keys.size == 1
     end
 
+    def is_named_like_top_level_namespace?
+      translations.keys.first == File.basename(@filepath, File.extname(@filepath))
+    end
+
   protected
 
     def translations
