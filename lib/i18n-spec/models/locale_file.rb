@@ -40,13 +40,6 @@ module I18nSpec
       translations.keys.first == File.basename(@filepath, File.extname(@filepath))
     end
 
-    def is_a_complete_tranlsation_of?(default_locale_filepath)
-      default_locale = LocaleFile.new(default_locale_filepath)
-      default_keys   = flatten_tree(translations.values.first).keys.sort
-      keys           = flatten_tree(default_locale.translations.values.first).keys.sort
-      keys == default_keys
-    end
-
   protected
 
     def flatten_tree(data, prefix = '', result = {})

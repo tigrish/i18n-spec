@@ -1,7 +1,6 @@
 en:
   hello: 'osalu'
   cats:
-    zero: 'pas de chats'
     one: 'un chat'
     other: '%{count} chats'
   itteh:
