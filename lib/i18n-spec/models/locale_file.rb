@@ -2,8 +2,18 @@ module I18nSpec
   class LocaleFile
     PLURALIZATION_KEYS = %w{zero one two few many other}
 
+    attr_accessor :filepath
+
     def initialize(filepath)
       @filepath = filepath
+    end
+
+    def translations
+      @translations ||= Psych.load_file(@filepath)
+    end
+
+    def flattened_translations
+      @flattened_translations ||= flatten_tree(translations.values.first)
     end
 
     def is_parseable?
@@ -38,10 +48,6 @@ module I18nSpec
     end
 
   protected
-
-    def translations
-      @translations ||= Psych.load_file(@filepath)
-    end
 
     def flatten_tree(data, prefix = '', result = {})
       data.each do |key, value|

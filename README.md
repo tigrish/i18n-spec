@@ -31,6 +31,12 @@ Even better, you can run all of these tests for every file in a directory like s
 
 ## Testing the validity of your translation data
 
+To test that your locale file is a subset of the default locale file
+
+	describe "config/locales/fr.yml" do
+	  it { should be_a_subset_of 'config/locales/en.yml' }
+	end
+
 If you need to test that all translations have been completed :
 
     describe "config/locales/fr.yml" do

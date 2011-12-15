@@ -1,0 +1,9 @@
+en:
+  dogs:
+    zero: 'no dogs'
+    one: 'one dog'
+    other: '%{count} dogs'
+  itteh:
+    bitteh:
+      ceiling:
+        doggeh: 'is asking for trouble'
