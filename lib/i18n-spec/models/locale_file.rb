@@ -8,6 +8,10 @@ module I18nSpec
       @filepath = filepath
     end
 
+    def content
+      @content ||= IO.read(@filepath)
+    end
+
     def translations
       @translations ||= Psych.load_file(@filepath)
     end

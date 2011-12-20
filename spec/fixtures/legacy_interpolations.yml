@@ -1,0 +1,4 @@
+en:
+  cats:
+    one: {{count}} cat
+    other: {{count}} cats

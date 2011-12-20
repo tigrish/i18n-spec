@@ -13,6 +13,7 @@ There are a few matchers available; the subject of the spec is always a path to 
       it { should have_valid_pluralization_keys }
       it { should have_one_top_level_namespace }
       it { should be_named_like_top_level_namespace }
+      it { should_not have_legacy_interpolations }
     end
 
 All of these tests can be ran in one line with a shared example :
