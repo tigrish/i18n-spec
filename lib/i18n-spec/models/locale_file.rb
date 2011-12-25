@@ -13,11 +13,27 @@ module I18nSpec
     end
 
     def translations
-      @translations ||= Psych.load_file(@filepath)
+      @translations ||= Psych.load(content)
     end
 
     def flattened_translations
       @flattened_translations ||= flatten_tree(translations.values.first)
+    end
+
+    def pluralizations
+      flatten_tree(translations).select do |key, value|
+        value.is_a?(Hash)
+      end
+    end
+
+    def invalid_pluralization_keys
+      invalid = []
+      pluralizations.each do |parent, pluralization|
+        pluralization.keys.select do |key, value|
+          invalid << [parent, key].join('.') unless PLURALIZATION_KEYS.include?(key)
+        end
+      end
+      invalid
     end
 
     def is_parseable?
@@ -27,13 +43,6 @@ module I18nSpec
       rescue Psych::SyntaxError => e
         false
       end
-    end
-
-    def has_valid_pluralization_keys?
-      pluralizations.each do |key, pluralization|
-        return false unless pluralization.keys.all? {|k| PLURALIZATION_KEYS.include?(k)}
-      end
-      true
     end
 
     def has_one_top_level_namespace?
@@ -63,10 +72,5 @@ module I18nSpec
       keys.any? {|k| PLURALIZATION_KEYS.include?(k) }
     end
 
-    def pluralizations
-      flatten_tree(translations).select do |key, value|
-        value.is_a?(Hash)
-      end
-    end
   end
 end
