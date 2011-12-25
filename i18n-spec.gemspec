@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{i18n-spec}
-  s.version = "0.0.9"
+  s.version = "0.0.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Christopher Dell}]
-  s.date = %q{2011-12-21}
+  s.date = %q{2011-12-25}
   s.description = %q{Includes a number of rspec matchers to make specing your locale files easy peasy.}
   s.email = %q{chris@tigrish.com}
   s.extra_rdoc_files = [
@@ -47,6 +47,7 @@ Gem::Specification.new do |s|
     "spec/fixtures/not_subset.yml",
     "spec/fixtures/unparseable.yml",
     "spec/lib/i18n-spec/matchers_spec.rb",
+    "spec/lib/i18n-spec/models/locale_file_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/tigrish/i18n-spec}
