@@ -1,5 +1,7 @@
 require 'i18n-spec'
 
+I18nSpec::LOG_DETAIL_PREDICATE = " | - "
+
 namespace :i18n do
   desc "Checks the validity of a locale file"
   task :check do
@@ -22,7 +24,7 @@ namespace :i18n do
       locale_file = I18nSpec::LocaleFile.new(filepath)
 
       unless locale_file.is_parseable?
-        log :fatal, 'could not be parsed'
+        log :fatal, 'could not be parsed', format_str(locale_file.errors[:unparseable])
         fatals += 1
         break
       end
@@ -37,14 +39,17 @@ namespace :i18n do
 
     puts "="*80
   end
-end
 
-def log(level, msg, detail=nil)
-  puts " - [" << level.to_s.upcase << ']: ' << msg 
-  puts detail if detail
-end
+  def log(level, msg, detail=nil)
+    puts " - [" << level.to_s.upcase << '] ' << msg 
+    puts detail if detail
+  end
 
-def format_array(array)
-  predicate = " | - "
-  predicate << array.join(predicate)
+  def format_array(array)
+    [I18nSpec::LOG_DETAIL_PREDICATE, array.join(I18nSpec::LOG_DETAIL_PREDICATE)].join
+  end
+
+  def format_str(str)
+    [I18nSpec::LOG_DETAIL_PREDICATE, str].join
+  end
 end
