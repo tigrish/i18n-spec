@@ -35,6 +35,7 @@ module I18nSpec
           invalid << [parent, key].join('.') unless PLURALIZATION_KEYS.include?(key)
         end
       end
+      @errors[:invalid_pluralization_keys] = invalid unless invalid.empty?
       invalid
     end
 

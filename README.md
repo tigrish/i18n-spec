@@ -43,3 +43,13 @@ If you need to test that all translations have been completed :
     describe "config/locales/fr.yml" do
       it { should be_a_complete_translation_of 'config/locales/en.yml' }
     end
+
+## Rake tasks
+
+You can check a locale file with the following task :
+
+    rake i18n:check FILEPATH
+
+or check a whole directory :
+
+    rake i18n:check DIRECTORY

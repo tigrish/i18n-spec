@@ -29,8 +29,8 @@ namespace :i18n do
         break
       end
 
-      unless (details = locale_file.invalid_pluralization_keys).empty?
-        log :error, 'invalid pluralization keys', format_array(details)
+      unless locale_file.invalid_pluralization_keys.empty?
+        log :error, 'invalid pluralization keys', format_array(locale_file.errors[:invalid_pluralization_keys])
         errors += 1
       end
 
