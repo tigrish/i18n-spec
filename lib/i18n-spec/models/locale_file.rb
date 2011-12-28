@@ -3,9 +3,11 @@ module I18nSpec
     PLURALIZATION_KEYS = %w{zero one two few many other}
 
     attr_accessor :filepath
+    attr_reader :errors
 
     def initialize(filepath)
       @filepath = filepath
+      @errors = {}
     end
 
     def content
@@ -38,9 +40,10 @@ module I18nSpec
 
     def is_parseable?
       begin
-        Psych.load_file(@filepath)
+        Psych.load(content)
         true
       rescue Psych::SyntaxError => e
+        @errors[:unparseable] = e.to_s
         false
       end
     end
