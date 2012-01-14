@@ -48,4 +48,4 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
-require './lib/i18n-spec/tasks/checker'
+require 'i18n-spec/tasks'

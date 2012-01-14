@@ -46,10 +46,27 @@ If you need to test that all translations have been completed :
 
 ## Rake tasks
 
+Include the tasks in your Rakefile with :
+
+    require 'i18n-spec/tasks'
+
+### Validating locale files
+
 You can check a locale file with the following task :
 
-    rake i18n:check FILEPATH
+    rake i18n-spec:validate FILEPATH
 
 or check a whole directory :
 
-    rake i18n:check DIRECTORY
+    rake i18n-spec:validate DIRECTORY
+
+### Checking for translation completeness
+
+
+You can check a locale file with the following taks :
+
+	rake i18n-spec:completeness SOURCE_FILEPATH TRANSLATED_FILEPATH
+
+or again, check a whole directory :
+
+	rake i18n-spec:completeness SOURCE_FILEPATH DIRECTORY
