@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{i18n-spec}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Christopher Dell}]
-  s.date = %q{2011-12-31}
+  s.date = %q{2012-01-14}
   s.description = %q{Includes a number of rspec matchers to make specing your locale files easy peasy.}
   s.email = %q{chris@tigrish.com}
   s.extra_rdoc_files = [
@@ -38,7 +38,7 @@ Gem::Specification.new do |s|
     "lib/i18n-spec/matchers/have_valid_pluralization_keys_matcher.rb",
     "lib/i18n-spec/models/locale_file.rb",
     "lib/i18n-spec/shared_examples/valid_locale_file.rb",
-    "lib/i18n-spec/tasks/checker.rb",
+    "lib/i18n-spec/tasks.rb",
     "spec/fixtures/en.yml",
     "spec/fixtures/es.yml",
     "spec/fixtures/fr.yml",
