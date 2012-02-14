@@ -31,8 +31,8 @@ module I18nSpec
     def invalid_pluralization_keys
       invalid = []
       pluralizations.each do |parent, pluralization|
-        pluralization.keys.select do |key, value|
-          invalid << [parent, key].join('.') unless PLURALIZATION_KEYS.include?(key)
+        unless pluralization.keys.all? { |key| PLURALIZATION_KEYS.include?(key) }
+          invalid << parent
         end
       end
       @errors[:invalid_pluralization_keys] = invalid unless invalid.empty?

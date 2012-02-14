@@ -5,6 +5,6 @@ RSpec::Matchers.define :have_valid_pluralization_keys do |expected|
   end
 
   failure_message_for_should do |filepath|
-    "expected #{filepath} to not include invalid pluralization keys :\n- " << @locale_file.errors[:invalid_pluralization_keys].join("\n- ")
+    "expected #{filepath} to not contain invalid pluralization keys in the following namespaces :\n- " << @locale_file.errors[:invalid_pluralization_keys].join("\n- ")
   end
 end
