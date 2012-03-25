@@ -22,7 +22,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.0.10)
+  bundler (> 1.0.10)
   jeweler (~> 1.6.4)
   rcov
   rspec (~> 2.3.0)
