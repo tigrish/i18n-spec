@@ -74,12 +74,18 @@ describe I18nSpec::LocaleFile do
       let(:locale_file) { locale_file_with_content(content) }
 
     it "returns the parent that contains invalid pluralizations" do
-      locale_file.invalid_pluralization_keys.should == ['en.cats', 'en.dogs']
+      locale_file.invalid_pluralization_keys.size.should == 2
+      locale_file.invalid_pluralization_keys.should be_include 'en.cats'
+      locale_file.invalid_pluralization_keys.should be_include 'en.dogs'
+      locale_file.invalid_pluralization_keys.should_not be_include 'en.birds'
     end
 
     it "adds a :invalid_pluralization_keys error with each invalid key" do
       locale_file.invalid_pluralization_keys
-      locale_file.errors[:invalid_pluralization_keys].should == ['en.cats', 'en.dogs']
+      locale_file.invalid_pluralization_keys.size.should == 2
+      locale_file.invalid_pluralization_keys.should be_include 'en.cats'
+      locale_file.invalid_pluralization_keys.should be_include 'en.dogs'
+      locale_file.invalid_pluralization_keys.should_not be_include 'en.birds'
     end
   end
 end
