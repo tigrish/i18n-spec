@@ -15,7 +15,7 @@ module I18nSpec
     end
 
     def translations
-      @translations ||= Psych.load(content)
+      @translations ||= yaml_load_content
     end
 
     def flattened_translations
@@ -41,7 +41,7 @@ module I18nSpec
 
     def is_parseable?
       begin
-        Psych.load(content)
+        yaml_load_content
         true
       rescue Psych::SyntaxError => e
         @errors[:unparseable] = e.to_s
@@ -74,6 +74,14 @@ module I18nSpec
     def pluralization_data?(data)
       keys = data.keys.map(&:to_s)
       keys.any? {|k| PLURALIZATION_KEYS.include?(k) }
+    end
+
+    def yaml_load_content
+      if defined? Psych
+        Psych.load(content)
+      else
+        YAML.load(content)
+      end
     end
 
   end
