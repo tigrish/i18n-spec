@@ -23,8 +23,14 @@ module I18nSpec
     end
 
     def pluralizations
-      flatten_tree(translations).select do |key, value|
+      result = flatten_tree(translations).select do |key, value|
         value.is_a?(Hash)
+      end
+
+      if result.is_a?(Array)
+        Hash[result]
+      else
+        result
       end
     end
 
@@ -43,7 +49,10 @@ module I18nSpec
       begin
         yaml_load_content
         true
-      rescue Psych::SyntaxError => e
+      rescue YAML::ParseError => e
+        @errors[:unparseable] = e.to_s
+        false
+      rescue ArgumentError => e
         @errors[:unparseable] = e.to_s
         false
       end
