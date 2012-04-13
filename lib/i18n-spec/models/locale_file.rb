@@ -86,7 +86,7 @@ module I18nSpec
     end
 
     def yaml_load_content
-      if defined? Psych
+      if defined?(Psych) and defined?(Psych::VERSION)
         Psych.load(content)
       else
         YAML.load(content)
