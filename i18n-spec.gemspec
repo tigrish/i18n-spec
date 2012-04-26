@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Christopher Dell}]
-  s.date = %q{2012-04-15}
+  s.date = %q{2012-04-26}
   s.description = %q{Includes a number of rspec matchers to make specing your locale files easy peasy.}
   s.email = %q{chris@tigrish.com}
   s.extra_rdoc_files = [
