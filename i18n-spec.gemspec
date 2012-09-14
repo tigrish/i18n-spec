@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{i18n-spec}
-  s.version = "0.2.2"
+  s.version = "0.2.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Christopher Dell}]
-  s.date = %q{2012-04-26}
+  s.date = %q{2012-09-14}
   s.description = %q{Includes a number of rspec matchers to make specing your locale files easy peasy.}
   s.email = %q{chris@tigrish.com}
   s.extra_rdoc_files = [
@@ -19,7 +19,6 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
     ".rspec",
-    ".rvmrc",
     ".travis.yml",
     "Gemfile",
     "Gemfile.lock",
@@ -33,6 +32,7 @@ Gem::Specification.new do |s|
     "lib/i18n-spec/matchers/be_a_subset_of_matcher.rb",
     "lib/i18n-spec/matchers/be_named_like_top_level_namespace_matcher.rb",
     "lib/i18n-spec/matchers/be_parseable_matcher.rb",
+    "lib/i18n-spec/matchers/have_a_valid_locale_matcher.rb",
     "lib/i18n-spec/matchers/have_legacy_interpolations.rb",
     "lib/i18n-spec/matchers/have_one_top_level_namespace_matcher.rb",
     "lib/i18n-spec/matchers/have_valid_pluralization_keys_matcher.rb",
@@ -42,6 +42,7 @@ Gem::Specification.new do |s|
     "spec/fixtures/en.yml",
     "spec/fixtures/es.yml",
     "spec/fixtures/fr.yml",
+    "spec/fixtures/invalid_locale.yml",
     "spec/fixtures/invalid_pluralization_keys.yml",
     "spec/fixtures/legacy_interpolations.yml",
     "spec/fixtures/multiple_top_levels.yml",
@@ -61,19 +62,22 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<iso>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 2.4.0"])
-      s.add_development_dependency(%q<bundler>, ["~> 1.1.3"])
+      s.add_development_dependency(%q<bundler>, ["~> 1.2.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_development_dependency(%q<rdoc>, [">= 0"])
     else
+      s.add_dependency(%q<iso>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 2.4.0"])
-      s.add_dependency(%q<bundler>, ["~> 1.1.3"])
+      s.add_dependency(%q<bundler>, ["~> 1.2.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_dependency(%q<rdoc>, [">= 0"])
     end
   else
+    s.add_dependency(%q<iso>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 2.4.0"])
-    s.add_dependency(%q<bundler>, ["~> 1.1.3"])
+    s.add_dependency(%q<bundler>, ["~> 1.2.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
     s.add_dependency(%q<rdoc>, [">= 0"])
   end
