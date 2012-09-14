@@ -66,6 +66,10 @@ module I18nSpec
       translations.keys.first == File.basename(@filepath, File.extname(@filepath))
     end
 
+    def has_a_valid_locale?
+      ISO::Tag.new(translations.keys.first).valid?
+    end
+
   protected
 
     def flatten_tree(data, prefix = '', result = {})

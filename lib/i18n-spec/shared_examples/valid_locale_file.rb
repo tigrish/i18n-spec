@@ -5,5 +5,6 @@ shared_examples_for "a valid locale file" do |locale_file|
     it { should have_one_top_level_namespace }
     it { should be_named_like_top_level_namespace }
     it { should_not have_legacy_interpolations }
+    it { should have_a_valid_locale }
   end
 end
