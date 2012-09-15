@@ -14,6 +14,7 @@ There are a few matchers available; the subject of the spec is always a path to 
       it { should have_one_top_level_namespace }
       it { should be_named_like_top_level_namespace }
       it { should_not have_legacy_interpolations }
+      it { should have_a_valid_locale }
     end
 
 All of these tests can be ran in one line with a shared example :
