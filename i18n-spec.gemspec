@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{i18n-spec}
-  s.version = "0.2.4"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Christopher Dell}]
-  s.date = %q{2012-09-15}
+  s.date = %q{2012-09-16}
   s.description = %q{Includes a number of rspec matchers to make specing your locale files easy peasy.}
   s.email = %q{chris@tigrish.com}
   s.extra_rdoc_files = [
@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
     "lib/i18n-spec/matchers/be_parseable_matcher.rb",
     "lib/i18n-spec/matchers/have_a_valid_locale_matcher.rb",
     "lib/i18n-spec/matchers/have_legacy_interpolations.rb",
+    "lib/i18n-spec/matchers/have_missing_pluralization_keys_matcher.rb",
     "lib/i18n-spec/matchers/have_one_top_level_namespace_matcher.rb",
     "lib/i18n-spec/matchers/have_valid_pluralization_keys_matcher.rb",
     "lib/i18n-spec/models/locale_file.rb",
@@ -45,6 +46,7 @@ Gem::Specification.new do |s|
     "spec/fixtures/invalid_locale.yml",
     "spec/fixtures/invalid_pluralization_keys.yml",
     "spec/fixtures/legacy_interpolations.yml",
+    "spec/fixtures/missing_pluralization_keys.yml",
     "spec/fixtures/multiple_top_levels.yml",
     "spec/fixtures/not_subset.yml",
     "spec/fixtures/unparseable.yml",
