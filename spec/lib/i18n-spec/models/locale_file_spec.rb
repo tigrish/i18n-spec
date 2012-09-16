@@ -104,4 +104,70 @@ describe I18nSpec::LocaleFile do
       locale_file.invalid_pluralization_keys.should_not be_include 'en.birds'
     end
   end
+
+  describe "#missing_pluralization_keys" do
+    it "returns the parents that containts missing pluralizations in with the english rules" do
+      content = "en:
+        cats:
+          one: one
+        dogs:
+          other: other
+        birds:
+          one: one
+          other: other"
+      locale_file = locale_file_with_content(content)
+      locale_file.missing_pluralization_keys.should == {
+        'en.cats' => %w(other),
+        'en.dogs' => %w(one)
+      }
+      locale_file.errors[:missing_pluralization_keys].should_not be_nil
+    end
+
+    it "returns the parents that containts missing pluralizations in with the russian rules" do
+      content = "ru:
+        cats:
+          one: one
+          few: few
+          many: many
+          other: other
+        dogs:
+          one: one
+          other: some
+        birds:
+          zero: zero
+          one: one
+          few: few
+          other: other"
+      locale_file = locale_file_with_content(content)
+      locale_file.missing_pluralization_keys.should == {
+        'ru.dogs'  => %w(few many),
+        'ru.birds' => %w(many)
+      }
+      locale_file.errors[:missing_pluralization_keys].should_not be_nil
+    end
+
+    it "returns the parents that containts missing pluralizations in with the japanese rules" do
+      content = "ja:
+        cats:
+          one: one
+        dogs:
+          other: some
+        birds: not really a pluralization"
+      locale_file = locale_file_with_content(content)
+      locale_file.missing_pluralization_keys.should == { 'ja.cats' => %w(other) }
+      locale_file.errors[:missing_pluralization_keys].should_not be_nil
+    end
+
+    it "returns an empty hash when all pluralizations are complete" do
+      content = "ja:
+        cats:
+          other: one
+        dogs:
+          other: some
+        birds: not really a pluralization"
+      locale_file = locale_file_with_content(content)
+      locale_file.missing_pluralization_keys.should == {}
+      locale_file.errors[:missing_pluralization_keys].should be_nil
+    end
+  end
 end

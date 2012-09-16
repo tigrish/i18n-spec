@@ -53,6 +53,17 @@ module I18nSpec
       invalid
     end
 
+    def missing_pluralization_keys
+      return_data = {}
+      rule_names = locale.language.plural_rule_names
+      pluralizations.each do |parent, pluralization|
+        missing_keys = rule_names - pluralization.keys
+        return_data[parent] = missing_keys if missing_keys.any?
+      end
+      @errors[:missing_pluralization_keys] = return_data if return_data.any?
+      return_data
+    end
+
     def is_parseable?
       begin
         yaml_load_content
