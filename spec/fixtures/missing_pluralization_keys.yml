@@ -1,0 +1,4 @@
+ru:
+  cats:
+    one: 'a cat'
+    other: '%{count} cats'

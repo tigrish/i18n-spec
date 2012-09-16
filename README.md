@@ -11,6 +11,7 @@ There are a few matchers available; the subject of the spec is always a path to 
     describe "config/locales/en.yml" do
       it { should be_parseable }
       it { should have_valid_pluralization_keys }
+      it { should_not have_missing_pluralization_keys }
       it { should have_one_top_level_namespace }
       it { should be_named_like_top_level_namespace }
       it { should_not have_legacy_interpolations }

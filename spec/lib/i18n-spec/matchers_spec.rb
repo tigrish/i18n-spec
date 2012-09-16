@@ -12,6 +12,7 @@ describe "Invalid files" do
   it { 'spec/fixtures/legacy_interpolations.yml'.should have_legacy_interpolations }
   it { 'spec/fixtures/invalid_locale.yml'.should_not have_a_valid_locale }
   it { 'spec/fixtures/not_subset.yml'.should_not be_a_subset_of 'spec/fixtures/en.yml' }
+  it { 'spec/fixtures/missing_pluralization_keys.yml'.should have_missing_pluralization_keys }
 end
 
 describe "Translated files" do
