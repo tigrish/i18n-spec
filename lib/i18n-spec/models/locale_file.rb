@@ -22,6 +22,14 @@ module I18nSpec
       @flattened_translations ||= flatten_tree(translations.values.first)
     end
 
+    def locale
+      @locale ||= ISO::Tag.new(locale_code)
+    end
+
+    def locale_code
+      translations.keys.first
+    end
+
     def pluralizations
       result = flatten_tree(translations).select do |key, value|
         value.is_a?(Hash)
@@ -63,11 +71,7 @@ module I18nSpec
     end
 
     def is_named_like_top_level_namespace?
-      translations.keys.first == File.basename(@filepath, File.extname(@filepath))
-    end
-
-    def has_a_valid_locale?
-      ISO::Tag.new(translations.keys.first).valid?
+      locale_code == File.basename(@filepath, File.extname(@filepath))
     end
 
   protected

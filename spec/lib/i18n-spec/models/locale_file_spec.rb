@@ -11,9 +11,25 @@ end
 describe I18nSpec::LocaleFile do
   include LocaleFileHelper
 
+  describe "#locale_code" do
+    it "returns the first key of the file" do
+      locale_file = locale_file_with_content("pt-BR:\n  hello: world")
+      locale_file.locale_code.should == 'pt-BR'
+    end
+  end
+
+  describe "#locale" do
+    it "returns an ISO::Tag based on the locale_code" do
+      locale_file = locale_file_with_content("pt-BR:\n  hello: world")
+      locale_file.locale.should be_a(ISO::Tag)
+      locale_file.locale.language.code.should == 'pt'
+      locale_file.locale.region.code.should   == 'BR'
+    end
+  end
+
   describe "#is_parseable?" do
     context "when YAML is parseable" do
-      let(:locale_file) { locale_file = locale_file_with_content("en:\n  hello: world") }
+      let(:locale_file) { locale_file_with_content("en:\n  hello: world") }
 
       it "returns true" do
         locale_file.is_parseable?.should == true
