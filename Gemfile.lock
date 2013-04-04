@@ -27,7 +27,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.1.3)
+  bundler
   iso
   jeweler (~> 1.6.4)
   rdoc
