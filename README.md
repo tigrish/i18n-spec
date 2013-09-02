@@ -26,7 +26,7 @@ All of these tests can be ran in one line with a shared example :
 
 Even better, you can run all of these tests for every file in a directory like so :
 
-    Dir.glob('config/locale/*.yml') do |locale_file|
+    Dir.glob('config/locales/*.yml') do |locale_file|
       describe "a locale file" do
         it_behaves_like 'a valid locale file', locale_file
       end
