@@ -65,10 +65,16 @@ module I18nSpec
     end
 
     def is_parseable?
+      if RUBY_VERSION < "1.9.3"
+        yaml_parse_exception = YAML::ParseError
+      else
+        yaml_parse_exception = YAML::SyntaxError
+      end
+
       begin
         yaml_load_content
         true
-      rescue YAML::ParseError => e
+      rescue yaml_parse_exception => e
         @errors[:unparseable] = e.to_s
         false
       rescue ArgumentError => e
