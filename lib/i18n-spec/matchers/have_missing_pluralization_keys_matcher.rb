@@ -4,7 +4,13 @@ RSpec::Matchers.define :have_missing_pluralization_keys do
     @locale_file.missing_pluralization_keys.any?
   end
 
-  failure_message_for_should_not do |filepath|
+  failure_meth = begin
+                   method(:failure_message_when_negated)
+                 rescue NameError
+                   method(:failure_message_for_should_not)
+                 end
+
+  failure_meth.call do |filepath|
     flattened_keys = []
 
     @locale_file.errors[:missing_pluralization_keys].each do |parent, subkeys|

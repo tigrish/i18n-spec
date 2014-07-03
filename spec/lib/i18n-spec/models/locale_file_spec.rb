@@ -3,7 +3,7 @@ require 'spec_helper'
 module LocaleFileHelper
   def locale_file_with_content(content)
     locale_file = I18nSpec::LocaleFile.new('test.yml')
-    locale_file.should_receive(:content).and_return(content)
+    expect(locale_file).to receive(:content).and_return(content)
     locale_file
   end
 end
@@ -14,16 +14,16 @@ describe I18nSpec::LocaleFile do
   describe "#locale_code" do
     it "returns the first key of the file" do
       locale_file = locale_file_with_content("pt-BR:\n  hello: world")
-      locale_file.locale_code.should == 'pt-BR'
+      expect(locale_file.locale_code).to eq('pt-BR')
     end
   end
 
   describe "#locale" do
     it "returns an ISO::Tag based on the locale_code" do
       locale_file = locale_file_with_content("pt-BR:\n  hello: world")
-      locale_file.locale.should be_a(ISO::Tag)
-      locale_file.locale.language.code.should == 'pt'
-      locale_file.locale.region.code.should   == 'BR'
+      expect(locale_file.locale).to be_a(ISO::Tag)
+      expect(locale_file.locale.language.code).to eq('pt')
+      expect(locale_file.locale.region.code).to   eq('BR')
     end
   end
 
@@ -32,7 +32,7 @@ describe I18nSpec::LocaleFile do
       let(:locale_file) { locale_file_with_content("en:\n  hello: world") }
 
       it "returns true" do
-        locale_file.is_parseable?.should == true
+        expect(locale_file.is_parseable?).to eq(true)
       end
     end
 
@@ -40,12 +40,12 @@ describe I18nSpec::LocaleFile do
       let(:locale_file) { locale_file_with_content("<This isn't YAML>: foo: bar:") }
 
       it "returns false" do
-        locale_file.is_parseable?.should == false
+        expect(locale_file.is_parseable?).to eq(false)
       end
 
       it "adds an :unparseable error" do
         locale_file.is_parseable?
-        locale_file.errors[:unparseable].should_not be_nil
+        expect(locale_file.errors[:unparseable]).not_to be_nil
       end
     end
   end
@@ -66,10 +66,10 @@ describe I18nSpec::LocaleFile do
 
     it "returns the leaf where one of the keys is a pluralization key" do
       locale_file = locale_file_with_content(content)
-      locale_file.pluralizations.should == {
+      expect(locale_file.pluralizations).to eq({
         'en.cats' => {'one' => 'one', 'two' => 'two', 'three' => 'three'},
         'en.dogs' => {'one' => 'one', 'some' => 'some'},
-      }
+      })
     end
   end
 
@@ -90,18 +90,18 @@ describe I18nSpec::LocaleFile do
       let(:locale_file) { locale_file_with_content(content) }
 
     it "returns the parent that contains invalid pluralizations" do
-      locale_file.invalid_pluralization_keys.size.should == 2
-      locale_file.invalid_pluralization_keys.should be_include 'en.cats'
-      locale_file.invalid_pluralization_keys.should be_include 'en.dogs'
-      locale_file.invalid_pluralization_keys.should_not be_include 'en.birds'
+      expect(locale_file.invalid_pluralization_keys.size).to eq(2)
+      expect(locale_file.invalid_pluralization_keys).to be_include 'en.cats'
+      expect(locale_file.invalid_pluralization_keys).to be_include 'en.dogs'
+      expect(locale_file.invalid_pluralization_keys).not_to be_include 'en.birds'
     end
 
     it "adds a :invalid_pluralization_keys error with each invalid key" do
       locale_file.invalid_pluralization_keys
-      locale_file.invalid_pluralization_keys.size.should == 2
-      locale_file.invalid_pluralization_keys.should be_include 'en.cats'
-      locale_file.invalid_pluralization_keys.should be_include 'en.dogs'
-      locale_file.invalid_pluralization_keys.should_not be_include 'en.birds'
+      expect(locale_file.invalid_pluralization_keys.size).to eq(2)
+      expect(locale_file.invalid_pluralization_keys).to be_include 'en.cats'
+      expect(locale_file.invalid_pluralization_keys).to be_include 'en.dogs'
+      expect(locale_file.invalid_pluralization_keys).not_to be_include 'en.birds'
     end
   end
 
@@ -116,11 +116,11 @@ describe I18nSpec::LocaleFile do
           one: one
           other: other"
       locale_file = locale_file_with_content(content)
-      locale_file.missing_pluralization_keys.should == {
+      expect(locale_file.missing_pluralization_keys).to eq({
         'en.cats' => %w(other),
         'en.dogs' => %w(one)
-      }
-      locale_file.errors[:missing_pluralization_keys].should_not be_nil
+      })
+      expect(locale_file.errors[:missing_pluralization_keys]).not_to be_nil
     end
 
     it "returns the parents that containts missing pluralizations in with the russian rules" do
@@ -139,11 +139,11 @@ describe I18nSpec::LocaleFile do
           few: few
           other: other"
       locale_file = locale_file_with_content(content)
-      locale_file.missing_pluralization_keys.should == {
+      expect(locale_file.missing_pluralization_keys).to eq({
         'ru.dogs'  => %w(few many),
         'ru.birds' => %w(many)
-      }
-      locale_file.errors[:missing_pluralization_keys].should_not be_nil
+      })
+      expect(locale_file.errors[:missing_pluralization_keys]).not_to be_nil
     end
 
     it "returns the parents that containts missing pluralizations in with the japanese rules" do
@@ -154,8 +154,8 @@ describe I18nSpec::LocaleFile do
           other: some
         birds: not really a pluralization"
       locale_file = locale_file_with_content(content)
-      locale_file.missing_pluralization_keys.should == { 'ja.cats' => %w(other) }
-      locale_file.errors[:missing_pluralization_keys].should_not be_nil
+      expect(locale_file.missing_pluralization_keys).to eq({ 'ja.cats' => %w(other) })
+      expect(locale_file.errors[:missing_pluralization_keys]).not_to be_nil
     end
 
     it "returns an empty hash when all pluralizations are complete" do
@@ -166,8 +166,8 @@ describe I18nSpec::LocaleFile do
           other: some
         birds: not really a pluralization"
       locale_file = locale_file_with_content(content)
-      locale_file.missing_pluralization_keys.should == {}
-      locale_file.errors[:missing_pluralization_keys].should be_nil
+      expect(locale_file.missing_pluralization_keys).to eq({})
+      expect(locale_file.errors[:missing_pluralization_keys]).to be_nil
     end
   end
 end

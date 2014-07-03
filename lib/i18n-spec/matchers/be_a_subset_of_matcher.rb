@@ -8,7 +8,13 @@ RSpec::Matchers.define :be_a_subset_of do |default_locale_filepath|
     @superset.empty?
   end
 
-  failure_message_for_should do |filepath|
+  failure_meth = begin
+                   method(:failure_message)
+                 rescue NameError
+                   method(:failure_message_for_should)
+                 end
+
+  failure_meth.call do |filepath|
     "expected #{filepath} to not include :\n- " << @superset.join("\n- ")
   end
 end
