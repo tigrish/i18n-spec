@@ -1,4 +1,4 @@
-require 'rspec'
+require 'rspec/core'
 
 RSpec::Matchers.define :be_named_like_top_level_namespace do
   match do |actual|
