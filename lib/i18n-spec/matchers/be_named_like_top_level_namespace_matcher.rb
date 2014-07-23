@@ -1,5 +1,3 @@
-require 'rspec'
-
 RSpec::Matchers.define :be_named_like_top_level_namespace do
   match do |actual|
     locale_file = I18nSpec::LocaleFile.new(actual)
