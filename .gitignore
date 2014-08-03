@@ -16,3 +16,5 @@ pkg
 
 # rvm
 .rvmrc
+
+gemfiles/*.lock
