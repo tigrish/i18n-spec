@@ -9,13 +9,13 @@ i18n-spec provides RSpec matchers for testing your locale files and their transl
 There are a few matchers available; the subject of the spec is always a path to a locale file.
 
     describe "config/locales/en.yml" do
-      it { should be_parseable }
-      it { should have_valid_pluralization_keys }
-      it { should_not have_missing_pluralization_keys }
-      it { should have_one_top_level_namespace }
-      it { should be_named_like_top_level_namespace }
-      it { should_not have_legacy_interpolations }
-      it { should have_a_valid_locale }
+      it { is_expected.to be_parseable }
+      it { is_expected.to have_valid_pluralization_keys }
+      it { is_expected.to_not have_missing_pluralization_keys }
+      it { is_expected.to have_one_top_level_namespace }
+      it { is_expected.to be_named_like_top_level_namespace }
+      it { is_expected.to_not have_legacy_interpolations }
+      it { is_expected.to have_a_valid_locale }
     end
 
 All of these tests can be ran in one line with a shared example :
@@ -37,13 +37,13 @@ Even better, you can run all of these tests for every file in a directory like s
 To test that your locale file is a subset of the default locale file
 
 	describe "config/locales/fr.yml" do
-	  it { should be_a_subset_of 'config/locales/en.yml' }
+	  it { is_expected.to be_a_subset_of 'config/locales/en.yml' }
 	end
 
 If you need to test that all translations have been completed :
 
     describe "config/locales/fr.yml" do
-      it { should be_a_complete_translation_of 'config/locales/en.yml' }
+      it { is_expected.to be_a_complete_translation_of 'config/locales/en.yml' }
     end
 
 ## Rake tasks
