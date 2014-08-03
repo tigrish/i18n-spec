@@ -17,4 +17,5 @@ pkg
 # rvm
 .rvmrc
 
+Gemfile.lock
 gemfiles/*.lock
