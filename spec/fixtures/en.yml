@@ -8,3 +8,5 @@ en:
     bitteh:
       ceiling:
         kitteh: 'is watching you'
+  group:
+    joined: "%{user_name} successfully joined %{group}"

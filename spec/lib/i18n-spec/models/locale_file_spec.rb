@@ -106,7 +106,7 @@ describe I18nSpec::LocaleFile do
   end
 
   describe "#missing_pluralization_keys" do
-    it "returns the parents that containts missing pluralizations in with the english rules" do
+    it "returns the parents that contains missing pluralizations in with the english rules" do
       content = "en:
         cats:
           one: one
@@ -123,7 +123,7 @@ describe I18nSpec::LocaleFile do
       expect(locale_file.errors[:missing_pluralization_keys]).not_to be_nil
     end
 
-    it "returns the parents that containts missing pluralizations in with the russian rules" do
+    it "returns the parents that contains missing pluralizations in with the russian rules" do
       content = "ru:
         cats:
           one: one
@@ -146,7 +146,7 @@ describe I18nSpec::LocaleFile do
       expect(locale_file.errors[:missing_pluralization_keys]).not_to be_nil
     end
 
-    it "returns the parents that containts missing pluralizations in with the japanese rules" do
+    it "returns the parents that contains missing pluralizations in with the japanese rules" do
       content = "ja:
         cats:
           one: one
