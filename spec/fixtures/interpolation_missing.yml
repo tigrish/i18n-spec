@@ -1,0 +1,11 @@
+es:
+  cats:
+    zero: 'no gatos'
+    one: 'un gato'
+    other: 'gatos'
+  itteh:
+    bitteh:
+      ceiling:
+        kitteh: 'te mira'
+  group:
+    joined: "(interpolation should var should be here) unido correctamente"

@@ -8,4 +8,4 @@ en:
       ceiling:
         kitteh: 'te regarde'
   group:
-    joined: # deliberatley empty
+    joined: # deliberatley empty translation for interpolation variable checker

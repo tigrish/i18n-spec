@@ -1,16 +1,16 @@
 RSpec::Matchers.define :have_interpolation_keys_of do |default_locale_filepath|
   extend I18nSpec::FailureMessage
 
-  match do |filepath|
-    locale_file = I18nSpec::LocaleFile.new(filepath)
-    default_locale = I18nSpec::LocaleFile.new(default_locale_filepath)
+  match do |test_locale_filepath|
+    default_translations = I18nSpec::LocaleFile.new(default_locale_filepath).flat_interpolations_only_hash
+    test_translations    = I18nSpec::LocaleFile.new(test_locale_filepath).flat_interpolations_only_hash
 
-    @superset = locale_file.flattened_and_interpolation_only.keys.reject do |key|
+    @superset = default_translations.keys.reject do |key|
+      default_value = default_translations[key]
+      test_value    = test_translations[key]
 
-      default_vars = default_locale.flattened_and_interpolation_only[key]
-      locale_vars  =    locale_file.flattened_and_interpolation_only[key]
-
-      (locale_vars == default_vars) || locale_vars.empty?
+      test_value.nil? ||
+      I18nSpec::Parse.for_interpolation_variables(default_value) == I18nSpec::Parse.for_interpolation_variables(test_value)
     end
 
     @superset.empty?

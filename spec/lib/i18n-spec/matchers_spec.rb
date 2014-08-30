@@ -12,7 +12,8 @@ describe "Invalid files" do
   it { expect('spec/fixtures/legacy_interpolations.yml').to have_legacy_interpolations }
   it { expect('spec/fixtures/invalid_locale.yml').not_to have_a_valid_locale }
   it { expect('spec/fixtures/not_subset.yml').not_to be_a_subset_of 'spec/fixtures/en.yml' }
-  it { expect('spec/fixtures/broken_interpolation_keys.yml').not_to have_interpolation_keys_of 'spec/fixtures/en.yml' }
+  it { expect('spec/fixtures/interpolation_misspelt.yml').not_to have_interpolation_keys_of 'spec/fixtures/en.yml' }
+  it { expect('spec/fixtures/interpolation_missing.yml').not_to have_interpolation_keys_of 'spec/fixtures/en.yml' }
   it { expect('spec/fixtures/missing_pluralization_keys.yml').to have_missing_pluralization_keys }
 end
 

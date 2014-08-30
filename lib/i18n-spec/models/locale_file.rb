@@ -22,8 +22,8 @@ module I18nSpec
       @flattened_translations ||= flatten_tree(translations.values.first)
     end
 
-    def flattened_and_interpolation_only
-      @flattened_and_interpolation_only ||= build_interpolations_only_tree(translations.values.first)
+    def flat_interpolations_only_hash
+      @flat_interpolations_only_hash ||= build_interpolations_only_hash(translations.values.first)
     end
 
     def locale
@@ -114,30 +114,22 @@ module I18nSpec
       keys.any? {|k| PLURALIZATION_KEYS.include?(k) }
     end
 
-    def build_interpolations_only_tree(data, new_tree = {}, key_trace = '')
+    def build_interpolations_only_hash(data, prefix = '', result = {})
       data.each_pair do |key, value|
-        extended_key_trace = key_trace + key
-
-        if value.is_a? Hash
-          new_tree = build_interpolations_only_tree(value, new_tree, extended_key_trace + '.')
+        current_prefix = prefix.empty? ? key.to_s : "#{prefix}.#{key}"
+        if !value.is_a? Hash
+          result[current_prefix] = value #if contains_variables?(value)
         else
-          new_tree[extended_key_trace] = parse_for_variables(value) if contains_variables?(value)
+          result = build_interpolations_only_hash(value, current_prefix, result)
         end
       end
 
-      new_tree
+      result
     end
 
     def contains_variables?(str)
       return false if str.nil?
-
-      !parse_for_variables(str).empty?
-    end
-
-    def parse_for_variables(str)
-      return nil if str.nil?
-
-      str.scan(/%{[^%{}]*}/)
+      !I18nSpec::Parse.for_interpolation_variables(str).empty?
     end
 
     def yaml_load_content
