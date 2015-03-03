@@ -26,3 +26,13 @@ describe "Translated files" do
     it { is_expected.not_to be_a_complete_translation_of 'spec/fixtures/en.yml'}
   end
 end
+
+describe 'Interpolation keys' do
+  describe 'spec/fixtures/fr.yml' do
+    it { is_expected.to be_a_complete_interpolation_key_of 'spec/fixtures/en.yml' }
+  end
+
+  describe 'spec/fixtures/es.yml' do
+    it { is_expected.not_to be_a_complete_interpolation_key_of 'spec/fixtures/en.yml' }
+  end
+end
