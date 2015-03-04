@@ -1,0 +1,5 @@
+interpolation:
+  foo:
+    text_1: '%{key_a} %{key_b}'
+    text_2: '%{key_b} %{key_a}'
+    text_3: ''

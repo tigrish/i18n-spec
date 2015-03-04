@@ -1,14 +1,32 @@
-RSpec::Matchers.define :be_a_subset_of do |default_locale_filepath|
+RSpec::Matchers.define :be_a_subset_of do |default_locale_filepath, check_interpolation_key = false|
   extend I18nSpec::FailureMessage
 
   match do |filepath|
     locale_file = I18nSpec::LocaleFile.new(filepath)
     default_locale = I18nSpec::LocaleFile.new(default_locale_filepath)
-    @superset = locale_file.flattened_translations.keys - default_locale.flattened_translations.keys
-    @superset.empty?
+    t1, t2 = locale_file.flattened_translations, default_locale.flattened_translations
+
+    @missing_scopes = t1.keys - t2.keys
+
+    if @missing_scopes.empty?
+      if check_interpolation_key
+        @missing_interpolation_keys = I18nSpec::InterpolationChecker.check t1, t2
+        @missing_interpolation_keys.empty?
+      else
+        true
+      end
+    else
+      false
+    end
   end
 
   failure_for_should do |filepath|
-    "expected #{filepath} to not include :\n- " << @superset.join("\n- ")
+    if @missing_interpolation_keys
+      listed = @missing_interpolation_keys
+        .map { |(scope, keys)| "\n - %s should have key %s" % [scope, keys.join(', ')] }
+      "expected #{filepath} not to contain the following interpolation keys :#{listed.join}"
+    else
+      "expected #{filepath} not to include :\n- " << @missing_scopes.join("\n- ")
+    end
   end
 end

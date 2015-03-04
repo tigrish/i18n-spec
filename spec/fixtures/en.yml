@@ -8,4 +8,3 @@ en:
     bitteh:
       ceiling:
         kitteh: 'is watching you'
-  interpolation: 'I am %{name}'

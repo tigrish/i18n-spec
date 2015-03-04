@@ -7,4 +7,3 @@ en:
     bitteh:
       ceiling:
         kitteh: 'te regarde'
-  interpolation: 'Je suis %{name}'

@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
     "i18n-spec.gemspec",
     "lib/i18n-spec.rb",
     "lib/i18n-spec/failure_message.rb",
+    "lib/i18n-spec/interpolation_cheker.rb",
     "lib/i18n-spec/matchers/be_a_complete_translation_of_matcher.rb",
     "lib/i18n-spec/matchers/be_a_subset_of_matcher.rb",
     "lib/i18n-spec/matchers/be_named_like_top_level_namespace_matcher.rb",

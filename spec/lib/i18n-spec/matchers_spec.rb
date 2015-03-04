@@ -28,11 +28,17 @@ describe "Translated files" do
 end
 
 describe 'Interpolation keys' do
-  describe 'spec/fixtures/fr.yml' do
-    it { is_expected.to be_a_complete_interpolation_key_of 'spec/fixtures/en.yml' }
+  describe 'spec/fixtures/interpolation/complete.yml' do
+    it { is_expected.to be_a_subset_of 'spec/fixtures/interpolation/base.yml' }
+    it { is_expected.to be_a_subset_of 'spec/fixtures/interpolation/base.yml', true }
+    it { is_expected.to be_a_complete_translation_of 'spec/fixtures/interpolation/base.yml' }
+    it { is_expected.to be_a_complete_translation_of 'spec/fixtures/interpolation/base.yml', true }
   end
 
-  describe 'spec/fixtures/es.yml' do
-    it { is_expected.not_to be_a_complete_interpolation_key_of 'spec/fixtures/en.yml' }
+  describe 'spec/fixtures/interpolation/incomplete.yml' do
+    it { is_expected.to be_a_subset_of 'spec/fixtures/interpolation/base.yml' }
+    it { is_expected.not_to be_a_subset_of 'spec/fixtures/interpolation/base.yml', true }
+    it { is_expected.to be_a_complete_translation_of 'spec/fixtures/interpolation/base.yml' }
+    it { is_expected.not_to be_a_complete_translation_of 'spec/fixtures/interpolation/base.yml', true }
   end
 end
