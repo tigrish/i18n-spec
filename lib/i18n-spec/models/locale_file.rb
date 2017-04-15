@@ -96,7 +96,7 @@ module I18nSpec
     def flatten_tree(data, prefix = '', result = {})
       data.each do |key, value|
         current_prefix = prefix.empty? ? key.to_s : "#{prefix}.#{key}"
-        if !value.is_a?(Hash) || pluralization_data?(value)
+        if !value.is_a?(Hash) || (pluralization_data?(value) && key != 'restrict_dependent_destroy')
           result[current_prefix] = value
         else
           flatten_tree(value, current_prefix, result)
