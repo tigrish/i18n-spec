@@ -7,5 +7,4 @@ group :development do
   gem "bundler"
   gem "jeweler"
   gem "rdoc"
-  gem "rcov", ">= 0" if RUBY_VERSION < '1.9'
 end
