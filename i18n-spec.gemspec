@@ -4,7 +4,6 @@ Gem::Specification.new do |s|
   s.name = "i18n-spec"
   s.version = I18nSpec::VERSION
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.required_ruby_version = ">= 2.3.0"
   s.require_paths = ["lib"]
   s.authors = ["Christopher Dell"]
@@ -18,7 +17,6 @@ Gem::Specification.new do |s|
   s.files = Dir["lib/**/*.rb"]
   s.homepage = "http://github.com/tigrish/i18n-spec"
   s.licenses = ["MIT"]
-  s.rubygems_version = "2.2.2"
   s.summary = "Matchers for specing locale files"
 
   s.add_runtime_dependency(%q<iso>, [">= 0"])
