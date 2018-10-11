@@ -22,8 +22,6 @@ Gem::Specification.new do |s|
   s.summary = "Matchers for specing locale files"
 
   s.add_runtime_dependency(%q<iso>, [">= 0"])
-  s.add_development_dependency(%q<rspec>, [">= 3"])
   s.add_development_dependency(%q<bundler>, [">= 0"])
-  s.add_development_dependency(%q<rdoc>, [">= 0"])
 end
 
