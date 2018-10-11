@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version = "0.6.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.required_ruby_version = ">= 2.0.0"
+  s.required_ruby_version = ">= 2.1.0"
   s.require_paths = ["lib"]
   s.authors = ["Christopher Dell"]
   s.date = "2014-10-27"
