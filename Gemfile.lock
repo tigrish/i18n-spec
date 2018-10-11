@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     i18n-spec (0.6.0)
-      iso
+      iso (~> 0.2)
 
 GEM
   remote: https://rubygems.org/
@@ -33,7 +33,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler
+  bundler (~> 1.0)
   i18n-spec!
   rake
   rdoc

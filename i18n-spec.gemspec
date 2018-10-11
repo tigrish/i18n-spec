@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.summary = "Matchers for specing locale files"
 
-  s.add_runtime_dependency(%q<iso>, [">= 0"])
-  s.add_development_dependency(%q<bundler>, [">= 0"])
+  s.add_runtime_dependency "iso", "~> 0.2"
+  s.add_development_dependency "bundler", "~> 1.0"
 end
 
