@@ -19,44 +19,7 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.md"
   ]
-  s.files = [
-    ".document",
-    ".rspec",
-    ".travis.yml",
-    "Gemfile",
-    "LICENSE.txt",
-    "README.md",
-    "Rakefile",
-    "VERSION",
-    "i18n-spec.gemspec",
-    "lib/i18n-spec.rb",
-    "lib/i18n-spec/failure_message.rb",
-    "lib/i18n-spec/matchers/be_a_complete_translation_of_matcher.rb",
-    "lib/i18n-spec/matchers/be_a_subset_of_matcher.rb",
-    "lib/i18n-spec/matchers/be_named_like_top_level_namespace_matcher.rb",
-    "lib/i18n-spec/matchers/be_parseable_matcher.rb",
-    "lib/i18n-spec/matchers/have_a_valid_locale_matcher.rb",
-    "lib/i18n-spec/matchers/have_legacy_interpolations.rb",
-    "lib/i18n-spec/matchers/have_missing_pluralization_keys_matcher.rb",
-    "lib/i18n-spec/matchers/have_one_top_level_namespace_matcher.rb",
-    "lib/i18n-spec/matchers/have_valid_pluralization_keys_matcher.rb",
-    "lib/i18n-spec/models/locale_file.rb",
-    "lib/i18n-spec/shared_examples/valid_locale_file.rb",
-    "lib/i18n-spec/tasks.rb",
-    "spec/fixtures/en.yml",
-    "spec/fixtures/es.yml",
-    "spec/fixtures/fr.yml",
-    "spec/fixtures/invalid_locale.yml",
-    "spec/fixtures/invalid_pluralization_keys.yml",
-    "spec/fixtures/legacy_interpolations.yml",
-    "spec/fixtures/missing_pluralization_keys.yml",
-    "spec/fixtures/multiple_top_levels.yml",
-    "spec/fixtures/not_subset.yml",
-    "spec/fixtures/unparseable.yml",
-    "spec/lib/i18n-spec/matchers_spec.rb",
-    "spec/lib/i18n-spec/models/locale_file_spec.rb",
-    "spec/spec_helper.rb"
-  ]
+  s.files = Dir["lib/**/*.rb"]
   s.homepage = "http://github.com/tigrish/i18n-spec"
   s.licenses = ["MIT"]
   s.rubygems_version = "2.2.2"
