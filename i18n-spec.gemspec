@@ -28,7 +28,6 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
-    "gemfiles/rspec_3.gemfile",
     "i18n-spec.gemspec",
     "lib/i18n-spec.rb",
     "lib/i18n-spec/failure_message.rb",
