@@ -11,9 +11,6 @@ doc
 # bundler
 .bundle
 
-# jeweler generated
-pkg
-
 # rvm
 .rvmrc
 
