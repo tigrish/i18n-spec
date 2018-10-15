@@ -7,7 +7,6 @@ Gem::Specification.new do |s|
   s.required_ruby_version = ">= 2.3.0"
   s.require_paths = ["lib"]
   s.authors = ["Christopher Dell"]
-  s.date = "2014-10-27"
   s.description = "Includes a number of rspec matchers to make specing your locale files easy peasy."
   s.email = "chris@tigrish.com"
   s.extra_rdoc_files = [
