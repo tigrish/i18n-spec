@@ -1,11 +1,7 @@
 source 'https://rubygems.org'
 
-gem "iso"
+gemspec
 
-group :development do
-  gem "rspec", ">= 3"
-  gem "bundler"
-  gem "jeweler"
-  gem "rdoc"
-  gem "rcov", ">= 0" if RUBY_VERSION < '1.9'
-end
+gem 'rake'
+gem 'rdoc'
+gem 'rspec', '~> 3.0'
