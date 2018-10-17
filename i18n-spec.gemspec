@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
     "README.md"
   ]
   s.files = Dir["lib/**/*.rb"]
-  s.homepage = "http://github.com/tigrish/i18n-spec"
+  s.homepage = "https://github.com/tigrish/i18n-spec"
   s.licenses = ["MIT"]
   s.summary = "Matchers for specing locale files"
 
