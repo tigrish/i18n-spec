@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name = "i18n-spec"
   s.version = I18nSpec::VERSION
 
-  s.required_ruby_version = ">= 2.3.0"
+  s.required_ruby_version = ">= 2.4.0"
   s.require_paths = ["lib"]
   s.authors = ["Christopher Dell"]
   s.description = "Includes a number of rspec matchers to make specing your locale files easy peasy."
