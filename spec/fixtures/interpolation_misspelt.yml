@@ -2,10 +2,10 @@ es:
   cats:
     zero: 'no gatos'
     one: 'un gato'
-    other: '%{count} gatos'
+    other: '%{count } gatos'
   itteh:
     bitteh:
       ceiling:
         kitteh: 'te mira'
   group:
-    joined: "%{user_name} unido correctamente %{group}"
+    joined: "%{user_name} unido correctamente %{groupo}"

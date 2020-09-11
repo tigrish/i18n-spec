@@ -2,10 +2,10 @@ es:
   cats:
     zero: 'no gatos'
     one: 'un gato'
-    other: '%{count} gatos'
+    other: 'gatos'
   itteh:
     bitteh:
       ceiling:
         kitteh: 'te mira'
   group:
-    joined: "%{user_name} unido correctamente %{group}"
+    joined: "(interpolation should var should be here) unido correctamente"

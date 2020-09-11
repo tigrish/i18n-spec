@@ -22,6 +22,10 @@ module I18nSpec
       @flattened_translations ||= flatten_tree(translations.values.first)
     end
 
+    def flat_interpolations_only_hash
+      @flat_interpolations_only_hash ||= build_interpolations_only_hash(translations.values.first)
+    end
+
     def locale
       @locale ||= ISO::Tag.new(locale_code)
     end
@@ -102,6 +106,24 @@ module I18nSpec
     def pluralization_data?(data)
       keys = data.keys.map(&:to_s)
       keys.any? {|k| PLURALIZATION_KEYS.include?(k) }
+    end
+
+    def build_interpolations_only_hash(data, prefix = '', result = {})
+      data.each_pair do |key, value|
+        current_prefix = prefix.empty? ? key.to_s : "#{prefix}.#{key}"
+        if !value.is_a? Hash
+          result[current_prefix] = value #if contains_variables?(value)
+        else
+          result = build_interpolations_only_hash(value, current_prefix, result)
+        end
+      end
+
+      result
+    end
+
+    def contains_variables?(str)
+      return false if str.nil?
+      !I18nSpec::Parse.for_interpolation_variables(str).empty?
     end
 
     def yaml_load_content
