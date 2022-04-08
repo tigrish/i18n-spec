@@ -106,7 +106,7 @@ module I18nSpec
 
     def yaml_load_content
       if defined?(Psych) and defined?(Psych::VERSION)
-        Psych.load(content)
+        Psych.load(content, aliases: true)
       else
         YAML.load(content)
       end
