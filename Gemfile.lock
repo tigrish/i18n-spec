@@ -15,7 +15,7 @@ GEM
     iso (0.2.2)
       i18n
     rake (12.3.3)
-    rdoc (6.0.4)
+    rdoc (6.1.2.1)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
